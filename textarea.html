@@ -30,8 +30,10 @@
     {  
         var eTxt = document.getElementById(strId);  
         var str = eTxt.value;  
-        str = str.replaceAll(" ", " ",true);  
-        str = str.replaceAll("\n", "<br/>",true);  
+        str = str.replaceAll(" ", "&nbsp",true);
+        str = str.replaceAll("\n", "<br/>",true);
+        str = str.replaceAll("\r", "<br/>",true);
+        str = str.replaceAll("\t", "<br/>",true);
         return str;  
     }  
       
