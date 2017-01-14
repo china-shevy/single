@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+    <head>  
+    <title>textarea测试</title>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+  
+    <style type="text/css" media="screen">  
+        .cc{width:600px;height:100px;}  
+        #d1{background:#88eeff;font-size:14px;}  
+        #zwtj{font-size:14px;}  
+    </style>  
+      
+    <script type="text/javascript">  
+      
+    // 扩展String类型的替换全部函数  
+    String.prototype.replaceAll = function(reallyDo, replaceWith, ignoreCase)   
+    {   
+        if (!RegExp.prototype.isPrototypeOf(reallyDo))   
+        {  
+            return this.replace(new RegExp(reallyDo, (ignoreCase ? "gi": "g")), replaceWith);   
+        }  
+        else   
+        {  
+            return this.replace(reallyDo, replaceWith);   
+        }  
+    }  
+  
+    // 获取转义后的字符串 保留回车符、保留空格符  
+    function getTextAreaValue(strId)  
+    {  
+        var eTxt = document.getElementById(strId);  
+        var str = eTxt.value;  
+        str = str.replaceAll(" ", " ",true);  
+        str = str.replaceAll("\n", "<br/>",true);  
+        return str;  
+    }  
+      
+    // 在div当中看转换后的textarea中的文本  
+    function showText()  
+    {  
+        var eD2 = document.getElementById("d1");  
+          
+        eD2.innerHTML = getTextAreaValue("zwtj");  
+        contains(eD2.innerHTML);
+    }  
+  
+    </script>  
+    </head>  
+  
+    <body>  
+  
+        <textarea name="zwtj" cols="80" rows="5" id="zwtj" ></textarea>  
+        <br/>  
+        <input type="button" value="查看文本↓" onclick="showText()" />  
+        <br/>  
+        <div class="cc" id="d1">  
+        @sonikk 2013-4-11 11:03:30  
+        </div>  
+              
+    </body>  
+</html> 
